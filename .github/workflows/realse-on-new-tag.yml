@@ -1,9 +1,9 @@
 name: realse-on-new-tag.yml
 on:
-#  workflow_dispatch: # Démarrer manuellement
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch: # Démarrer manuellement
+#  push:
+#    tags:
+#      - "v*"
 
 jobs:
   build:
@@ -25,10 +25,10 @@ jobs:
         run: dotnet test
 
       - name: Package application
-        run: dotnet publish -c Release -o ${{ vars.PUBLISH_DIR }}
+        run: dotnet publish -c Release -o "${{ vars.PUBLISH_DIR }}"
 
       - name: Check publish
-        run: ls ${{ vars.PUBLISH_DIR }}
+        run: ls "${{ vars.PUBLISH_DIR }}"
 
       - name: End publish
-        run: echo ${{ vars.TEST_SECRET }}
+        run: echo "${{ secrets.TEST_SECRET }}"
