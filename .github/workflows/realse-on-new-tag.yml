@@ -1,0 +1,31 @@
+name: realse-on-new-tag.yml
+on:
+#  workflow_dispatch: # Démarrer manuellement
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .Net
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Build solution
+        run: dotnet build
+
+      - name: Test solution
+        run: dotnet test
+
+      - name: Package application
+        run: dotnet publish -c Release -o ./publish
+
+      - name: Check publish
+        run: ls ./publish

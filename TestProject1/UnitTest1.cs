@@ -37,7 +37,7 @@ public class UnitTest1
 
         car.Speed = 10;
 
-        Assert.Equal(10 + 1, car.Speed);
+        Assert.Equal(10, car.Speed);
 
         Assert.Throws<Exception>(() => car.IncreaseSpeed(-25));
     }
