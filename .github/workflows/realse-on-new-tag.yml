@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: TestEnv # Préciser l'environnement utilisé.
 
     steps:
       - name: Checkout Code
