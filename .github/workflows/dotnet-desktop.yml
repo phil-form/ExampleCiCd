@@ -74,11 +74,10 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Test cicd
-      run: echo "Hello World!!"
+      run: echo "Hello World!!" && cd TestProject1 && dotnet run
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
+    - name: Build Project
+      run: cd ConsoleApp1/ && dotnet run
 
     # Execute all unit tests in the solution
     # - name: Execute unit tests
